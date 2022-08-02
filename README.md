@@ -61,11 +61,14 @@ The algorithm takes an object representing the surface on which we are consideri
 
 *Sample numerical results for one of the buildings in the picture above (note that these results are only example!).*
 
+## DEMO
+![FotoDemo](https://user-images.githubusercontent.com/45266568/182405527-dbf1effc-5f18-47a3-9dbc-31e6a4f57123.GIF)
+*Gif showing how the program works*
+
 ## API & Backend
 The algorithm will be made available through the API. In addition, we will provide a user interface with a map where you can indicate the building for which the analysis will be performed. The source data (i.e. DTM and building footprints) will be placed in a database for better performance. Communication between endpoint and backend will be done via message broker, RabbitMQ.
 
 ![image](https://user-images.githubusercontent.com/50464859/143936376-16188782-da4f-46cc-962a-85cbb110ee85.png)
-
 *Architecture diagram*
 
 ## Further development
