@@ -11,22 +11,14 @@ The project is carried out by members of Smart City Student Association located 
 - Exchange knowledge and gain experience in developing APIs and small information systems
 
 ## Data
-Building footprints and attributes were fetched from [Land and building register (EGiB)](https://www.geoportal.gov.pl/dane/dane-ewidencyjne). Digital Terrain Model (DTM) was downloaded manually for each tile from [geoportal](https://mapy.geoportal.gov.pl/imap/Imgp_2.html?gpmap=gp0). Additionally, the generated (for the sake of this algorithm) solar radiations maps were verified against measurement results provided by [the City Hall of Warsaw](http://mapa.um.warszawa.pl/mapaApp1/mapa?service=mapa_oze&L=en&X=7500996.700511402&Y=5787301.194500495&S=12&O=0&T=402180041a0000x01&komunikat=off). DTM consists of dozen .xyz files formatted as below:
+Building footprints and attributes were fetched from [Land and building register (EGiB)](https://www.geoportal.gov.pl/dane/dane-ewidencyjne). Files in shapefile format are used by the algorithm in order to detect buildings' borders. Digital Terrain Model (DTM) tiles were downloaded from [geoportal](https://mapy.geoportal.gov.pl/imap/Imgp_2.html?gpmap=gp0) via QGis as .laz files. They represent lidar data as a point cloud. All of these were filtered to get rid of outliers and abnormal records. Necessary data is stored in PostgreSQL database. Additionally, the generated (for the sake of this algorithm) solar radiations maps were verified against measurement results provided by [the City Hall of Warsaw](http://mapa.um.warszawa.pl/mapaApp1/mapa?service=mapa_oze&L=en&X=7500996.700511402&Y=5787301.194500495&S=12&O=0&T=402180041a0000x01&komunikat=off). 
 
-    636615.00	484359.00	111.80
-    636615.50	484359.00	111.88
-    636616.00	484359.00	111.82
-    636616.50	484359.00	111.85
-    ...
-
-XY coordinates are in the [EPSG:2180](https://spatialreference.org/ref/epsg/etrs89-poland-cs92/) spatial reference system. Building footprints are provided in shapefile format.
-
-
-![image](https://user-images.githubusercontent.com/50464859/144933003-470858c5-34d7-4471-b92e-5f48164b47db.png)
+r![image](https://user-images.githubusercontent.com/50464859/144933003-470858c5-34d7-4471-b92e-5f48164b47db.png)
 
 *Footprint example: Warsaw University of Technology, the main campus*
 
 ## Algorithm
+### Calculating solar-radiation
 The algorithm is based on 3 main criteria:
 - the aspect of the rooftop
 - the slope of the rooftop
@@ -43,6 +35,18 @@ Steps of the algorithm:
 5. Calculate slope (gradient) for each point of a surface.
 6. Reclassify and combine the results.
 7. Group the pixels and average the amount of solar radiation falling on them.
+
+### Panel optimization
+
+#### Preliminary assumptions
+
+Having a surface composed of points containing a numerical representation of the solar radiation level, we have created an algorithm which optimizes the process of installing solar panels. The algorithm finds the number of panels that are profitable to install and finds their position on the received surface. For the algorithm to work, we assume that the period of calculating savings, the size of one panel, and the cost of installing one panel are fixed.
+
+#### Operating principle
+
+The algorithm takes an object representing the surface on which we are considering solar panel installation. The object is made up of points, each of which represents a certain level of solar radiation (0–100). It searches the surface to find the sunniest areas, which potentially bring us the greatest savings. After finding the sunniest area, the algorithm continues the search for other areas and checks whether the savings resulting from their position will increase. If so, the algorithm marks the position of another panel and searches for the next one. If the algorithm does not find any more profitable areas to put the panels, it ends its work.
+
+![surface](https://github.com/MrSquidward/Solar-panels/blob/algorithmDesc/img/surfaceComparison.PNG)
 
 ## Results
 ![widok2d](https://user-images.githubusercontent.com/50464859/145687981-17f75e76-6ffa-462a-95b6-e6ef4c4c3957.PNG)
@@ -78,7 +82,6 @@ The algorithm will be made available through the API. In addition, we will provi
 
 ## Contributors
 - Antoni Gołoś ([MrSquidward](https://github.com/MrSquidward)) - project coordinator
-- Antoni Skrobek ([skrobeka](https://github.com/skrobeka))
 - Ola Jamróz ([Yamroza](https://github.com/Yamroza))
 - Kacper Tomczykowski ([Tomczykowski](https://github.com/Tomczykowski))
 - Maciek Dąbkowski ([dawerte](https://github.com/dawerte))
