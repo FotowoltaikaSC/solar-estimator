@@ -46,7 +46,7 @@ Having a surface composed of points containing a numerical representation of the
 
 The algorithm takes an object representing the surface on which we are considering solar panel installation. The object is made up of points, each of which represents a certain level of solar radiation (0–100). It searches the surface to find the sunniest areas, which potentially bring us the greatest savings. After finding the sunniest area, the algorithm continues the search for other areas and checks whether the savings resulting from their position will increase. If so, the algorithm marks the position of another panel and searches for the next one. If the algorithm does not find any more profitable areas to put the panels, it ends its work.
 
-![surface](https://user-images.githubusercontent.com/45266568/182410328-2130bbd1-a1a7-4acc-9f75-96e7e4cec03e.png)
+![surface](https://user-images.githubusercontent.com/45266568/182501667-ddf80515-6eec-41d4-9503-f0e06bd1c7d6.PNG)
 
 ## Results
 ![widok2d](https://user-images.githubusercontent.com/50464859/145687981-17f75e76-6ffa-462a-95b6-e6ef4c4c3957.PNG)
