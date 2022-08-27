@@ -1,4 +1,4 @@
-# Solar-estimator
+# Solar estimator
 Solar estimator is a tool to assess the feasibility of placing solar panels on the roofs of municipal buildings. Ultimately, an API will be created that will give the ability to perform analysis for a selected area of Warsaw. Solar estimator takes advantage of open source data, although commercial software is being used (ArcGis Pro). This repository is a showcase of project's progress, current state as well as plans for the future. 
 
 The project is carried out by members of Smart City Student Association located at Warsaw University of Technology.
