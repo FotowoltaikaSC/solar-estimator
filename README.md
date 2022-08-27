@@ -34,6 +34,7 @@ Panel location optimization algorithm finds the optimal number of panels that ca
 The algorithm takes a 2D list representing the surface on which we are considering installing solar panels. Each index in the list corresponds to small part (e.g. 2.5 square meters, but it depends on the data resolution) of the considered surface, and each value represents a certain level of solar radiation. The algorithm searches the surface to find the sunniest areas, which potentially bring the greatest return of invest (ROI). After finding the sunniest area, the algorithm continues the search for other areas and checks whether the ROI will increase after putting there solar panel. If so, the algorithm marks the position of another panel and searches for the next one. If the algorithm does not find any more profitable areas to put the panels, it ends its work.
 
 ![surface](https://user-images.githubusercontent.com/45266568/182501667-ddf80515-6eec-41d4-9503-f0e06bd1c7d6.PNG)
+*Simple example of input and output of the panel location optimization algorithm. In this case size of one panel is set to 2x2 indexes.*
 
 ### Summary
 Whole algorithm can be describe as below:
@@ -46,7 +47,7 @@ Whole algorithm can be describe as below:
 7. Apply panel location algorithm to the result of step 6.
 
 ## Results
-The result of the algorithm are numerical values, describing the number of panels and the power that can be generated.
+The results of the algorithm are numerical values, describing the number of panels and the power that can be generated.
 
 ![widok2d](https://user-images.githubusercontent.com/50464859/145687981-17f75e76-6ffa-462a-95b6-e6ef4c4c3957.PNG)
 *Two buildings in the main campus of WUT: solar radiation map with orthophoto in the background*
